@@ -9,13 +9,13 @@ class Song {
 			->join('artists', 'artists.id', '=', 'songs.artist_id')
 			->join('genres', 'songs.genre_id', '=', 'genres.id');
 
-		// if($title) {
-		// 	$query->where('title', 'LIKE', "%$title%");
-		// }
+		if($title) {
+			$query->where('title', 'LIKE', "%$title%");
+		}
 
-		// if($artist) {
-		// 	$query->where('artist_name', 'LIKE', "%$artist%");
-		// }	
+		if($artist) {
+			$query->where('artist_name', 'LIKE', "%$artist%");
+		}	
 
 		$songs = $query->get();
 

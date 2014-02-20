@@ -1,6 +1,6 @@
 <?php
 
-class SongController {
+class SongController extends BaseController {
 
 	public function search()
 	{

@@ -1,6 +1,6 @@
 <?php
 
-class DvdController {
+class DvdController extends BaseController {
 
 	public function search()
 	{
