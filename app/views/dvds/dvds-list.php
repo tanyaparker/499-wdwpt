@@ -15,8 +15,9 @@
 			<p>Rating: <?php echo $dvd->rating; ?></p>
 			<p>Genre: <?php echo $dvd->genre; ?></p>
 			<p>Label: <?php echo $dvd->label; ?></p>
-			<p>Format: <?php echo $dvd->format; ?></p>
 			<p>Sound: <?php echo $dvd->sound; ?></p>
+			<p>Format: <?php echo $dvd->format; ?></p>
+			<p>Release Data: <?php echo $dvd->release_date; ?></p>
 		</div>
 	<?php endforeach; ?>
 
