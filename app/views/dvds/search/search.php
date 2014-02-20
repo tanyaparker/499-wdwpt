@@ -1,7 +1,3 @@
-<?php
-include 'form.css';
-?>
-
 <!doctype html>
 <html>
 <head>
