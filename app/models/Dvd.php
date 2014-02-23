@@ -18,12 +18,12 @@ class Dvd {
 			$query->where('title', 'LIKE', "%$title%");
 		}
 
-		if($genre_id != 'All') {
-			$query->where('genre_name', '=', $genre_id);
+		if($genre_id != "All") {
+			$query->where('genre_id', '=', $genre_id);
 		}	
 
 		if($rating_id != 'All') {
-			$query->where('rating_name', '=', $rating_id);
+			$query->where('rating_id', '=', $rating_id);
 		}	
 
 		$dvds = $query->get();

@@ -1,3 +1,5 @@
+<?php require_once 'box.css'; ?>
+
 <!doctype html>
 <html>
 <head>
@@ -8,16 +10,14 @@
 	<h1>Your search returned: </h1>
 
 	<?php foreach($dvds as $dvd) : ?>
-		<div class="dvd">
-			<h4>
-				<?php echo $dvd->title; ?> by
-			</h4>
-			<p>Rating: <?php echo $dvd->rating; ?></p>
-			<p>Genre: <?php echo $dvd->genre; ?></p>
-			<p>Label: <?php echo $dvd->label; ?></p>
-			<p>Sound: <?php echo $dvd->sound; ?></p>
-			<p>Format: <?php echo $dvd->format; ?></p>
-			<p>Release Data: <?php echo $dvd->release_date; ?></p>
+		<div class="gradientBox">
+			<b><u><?php echo $dvd->title; ?><br /></b></u>
+			Rating: <?php echo $dvd->rating_name; ?><br />
+			Genre: <?php echo $dvd->genre_name; ?><br />
+			Label: <?php echo $dvd->label_name; ?><br />
+			Sound: <?php echo $dvd->sound_name; ?><br />
+			Format: <?php echo $dvd->format_name; ?><br />
+			Release Data: <?php echo $dvd->release_date; ?><br />
 		</div>
 	<?php endforeach; ?>
 
