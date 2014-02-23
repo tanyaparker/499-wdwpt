@@ -1,3 +1,4 @@
+<?php require 'form.css'; ?>
 <!doctype html>
 <html>
 <head>
@@ -15,14 +16,20 @@
 	</tr>
 	<tr>
 		<td><font face="Helvetica"><b>Genre:</b></font></td>
-		<td><select>
-			<option value="">All</option>
+		<td><select name="genre_id">
+			<option value="All">All</option>
+			<?php foreach ($genres as $genre) :
+				echo "<option value='$genre->id'>$genre->genre_name</option>";
+			endforeach; ?>
 		</select></td>
 	</tr>
 	<tr>
 		<td><font face="Helvetica"><b>Rating:</b></font></td>
-		<td><select>
-			<option value="">All</option>
+		<td><select name="rating_id">
+			<option value="All">All</option>
+			<?php foreach ($ratings as $rating) :
+				echo "<option value='$rating->id'>$rating->rating_name</option>";
+			endforeach; ?>
 		</select></td>
 	</tr>
 	<tr>

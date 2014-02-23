@@ -4,15 +4,21 @@ class DvdController extends BaseController {
 
 	public function search()
 	{
-		return View::make('dvds/search');
+		$genres = Dvd::getGenres();
+		$ratings = Dvd::getRatings();
+
+		return View::make('dvds/search', [
+			'genres'  => $genres,
+			'ratings' => $ratings
+		]);
 	}
 
 	public function listDvds()
 	{
 		$title = Input::get('title');
-		$genre = Input::get('genre');
-		$rating = Input::get('rating');
-		$dvds = Dvd::search($title, $genre, $rating);	
+		$genre_id = Input::get('genre_id');
+		$rating_id = Input::get('rating_id');
+		$dvds = Dvd::search($title, $genre_id, $rating_id);	
 
 		return View::make('dvds/dvds-list', [
 			'dvds' => $dvds
