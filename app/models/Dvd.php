@@ -1,6 +1,6 @@
 <?php
 
-class Dvd {
+class Dvd extends Eloquent {
 
 	public static function search($title, $genre_id, $rating_id)
 	{
@@ -25,6 +25,8 @@ class Dvd {
 		if($rating_id != 'All') {
 			$query->where('rating_id', '=', $rating_id);
 		}	
+
+		$query = dvds::where('votes', '>', 100)->take(30);
 
 		$dvds = $query->get();
 		return $dvds;	

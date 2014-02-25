@@ -21,12 +21,7 @@
 		<td><b><u>Format</u></b></td>
 		<td><b><u>Release Date</b></u></td>
 	</tr>
-	<?php $count = 0;
-	foreach($dvds as $dvd) :
-		if ($count == 30)
-			break; 
-		else
-			$count++; ?>
+	<?php foreach($dvds as $dvd) : ?>
 		<tr>
 			<td><?php echo $dvd->title; ?></td>
 			<td><?php echo $dvd->rating_name; ?></td>
