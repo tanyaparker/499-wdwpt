@@ -4,12 +4,13 @@ class Dvd extends Eloquent {
 
 	public static function search($title, $genre_id, $rating_id)
 	{
-		$query= Dvd::with(['genre', 'label', 'rating', 'sound', 'format'])
-			->take(30);
-
-		if($title) {
-			$query->where('title', 'LIKE', "%$title%");
-		}
+		$query= Dvd::where('title', 'LIKE', "%$title%")
+			->take(30)
+			->join('genres', 'dvds.genre_id', '=', 'genres.id')
+			->join('ratings', 'dvds.rating_id', '=', 'ratings.id')
+			->join('labels', 'dvds.label_id', '=', 'labels.id')
+			->join('sounds', 'dvds.sound_id', '=', 'sounds.id')
+			->join('formats', 'dvds.format_id', '=', 'formats.id');
 
 		if($genre_id != "All") {
 			//$query->where(2)->rating;
