@@ -25,4 +25,21 @@ class DvdController extends BaseController {
 		]);
 	}
 
+	public function create() 
+	{
+		$genres = Dvd::getGenres();
+		$ratings = Dvd::getRatings();
+		$labels = Dvd::getLabels();
+		$sounds = Dvd::getSounds();
+		$formats = Dvd::getFormats();
+		
+		return View::make('dvds/create', [
+			'genres' => $genres,
+			'ratings' => $ratings,
+			'labels' => labels,
+			'sounds' => sounds,
+			'formats' => formats
+		]);
+	}
+
 }
