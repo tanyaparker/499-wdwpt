@@ -4,10 +4,15 @@ class Dvd extends Eloquent {
 
 	public static function search($title, $genre_id, $rating_id)
 	{
-		$query = Dvd::where('title', 'LIKE', "%$title%")
+		$query= Dvd::with(['genre', 'label', 'rating', 'sound', 'format'])
 			->take(30);
 
+		if($title) {
+			$query->where('title', 'LIKE', "%$title%");
+		}
+
 		if($genre_id != "All") {
+			//$query->where(2)->rating;
 			$query->where('genre_id', '=', $genre_id);
 		}	
 
@@ -32,4 +37,31 @@ class Dvd extends Eloquent {
 		$ratings = $query->get();
 		return $ratings;
 	}
+
+	public function format()
+  	{
+    	return $this->belongsTo('Format');
+  	}
+
+  	public function genre()
+  	{
+    	return $this->belongsTo('Genre');
+  	}
+
+  	public function label()
+  	{
+    	return $this->belongsTo('Label');
+  	}
+
+  	public function rating()
+  	{
+    	return $this->belongsTo('Rating');
+  	}
+
+  	public function sound()
+  	{
+    	return $this->belongsTo('Sound');
+  	}
+
+
 }
