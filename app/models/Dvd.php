@@ -4,19 +4,8 @@ class Dvd extends Eloquent {
 
 	public static function search($title, $genre_id, $rating_id)
 	{
-		$query = DB::table('dvds')
-			->select('title', 'genre_name', 'rating_name', 
-				'label_name', 'sound_name', 'format_name', 
-				DB::raw("DATE_FORMAT(release_date, '%M %d %Y, %h:%i %p') AS release_date"))
-			->join('genres', 'dvds.genre_id', '=', 'genres.id')
-			->join('ratings', 'dvds.rating_id', '=', 'ratings.id')
-			->join('labels', 'dvds.label_id', '=', 'labels.id')
-			->join('sounds', 'dvds.sound_id', '=', 'sounds.id')
-			->join('formats', 'dvds.format_id', '=', 'formats.id');
-
-		if($title) {
-			$query->where('title', 'LIKE', "%$title%");
-		}
+		$query = Dvd::where('title', 'LIKE', "%$title%")
+			->take(30);
 
 		if($genre_id != "All") {
 			$query->where('genre_id', '=', $genre_id);
@@ -25,8 +14,6 @@ class Dvd extends Eloquent {
 		if($rating_id != 'All') {
 			$query->where('rating_id', '=', $rating_id);
 		}	
-
-		$query = dvds::where('votes', '>', 100)->take(30);
 
 		$dvds = $query->get();
 		return $dvds;	
