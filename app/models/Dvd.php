@@ -6,14 +6,23 @@ class Dvd extends Eloquent {
 	{
 		$query= Dvd::where('title', 'LIKE', "%$title%")
 			->take(30)
-			->join('genres', 'dvds.genre_id', '=', 'genres.id')
-			->join('ratings', 'dvds.rating_id', '=', 'ratings.id')
-			->join('labels', 'dvds.label_id', '=', 'labels.id')
-			->join('sounds', 'dvds.sound_id', '=', 'sounds.id')
-			->join('formats', 'dvds.format_id', '=', 'formats.id');
+			->join('genres', function($join) {
+				$join->on('dvds.genre_id', '=', 'genres.id');
+				})
+			->join('ratings', function($join) {
+				$join->on('dvds.rating_id', '=', 'ratings.id');
+				})
+			->join('labels', function($join) {
+				$join->on('dvds.label_id', '=', 'labels.id');
+				})
+			->join('sounds', function($join) {
+				$join->on('dvds.sound_id', '=', 'sounds.id');
+				})
+			->join('formats', function($join) {
+				$join->on('dvds.format_id', '=', 'formats.id');
+				});
 
 		if($genre_id != "All") {
-			//$query->where(2)->rating;
 			$query->where('genre_id', '=', $genre_id);
 		}	
 
