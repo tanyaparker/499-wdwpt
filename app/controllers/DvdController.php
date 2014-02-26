@@ -44,28 +44,20 @@ class DvdController extends BaseController {
 
 	public function insert()
 	{
-		$validation = Dvd::validate(Input::all());
+		$dvd = new Dvd();
+		$dvd->title = Input::get('title');
+		$dvd->genre_id = Input::get('genre_id');
+		$dvd->rating_id = Input::get('rating_id');
+		$dvd->label_id = Input::get('label_id');
+		$dvd->sound_id = Input::get('sound_id');
+		$dvd->format_id = Input::get('format_id');
+		$dvd->release_date = Input::get('release_date');
+		$dvd->award = Input::get('award');
+		$dvd->save();
 
-  		if ($validation->passes()) {
-			$dvd = new Dvd();
-			$dvd->title = Input::get('title');
-			$dvd->genre_id = Input::get('genre_id');
-			$dvd->rating_id = Input::get('rating_id');
-			$dvd->label_id = Input::get('label_id');
-			$dvd->sound_id = Input::get('sound_id');
-			$dvd->format_id = Input::get('format_id');
-			$dvd->release_date = Input::get('release_date');
-			$dvd->save();
+		return Redirect::to('dvds/create')
+			->with('success', 'DVD successfully added.');
 
-			return Redirect::to('dvds/create')
-				->with('success', 'DVD successfully added.');
-
-		}
-		else {
-			return Redirect::to('dvds/create')
-    			->withInput()
-   				->with('errors', $validation->messages());
-		}
 	}
 
 }

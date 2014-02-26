@@ -2,7 +2,7 @@
 	require 'form.css'; 
 
 	if (Session::has('success')) : 
-        echo "<p>" . Session::get('success') . "<p>";
+        echo "<p style='background-color: green;'>" . Session::get('success') . "<p>";
 	endif 
 ?>
 <!doctype html>
@@ -13,12 +13,20 @@
 
 <body>
 
-<form method="post" action="<?php echo url('dvds/create'); ?>">
+<form method="post" action="/dvds">
 	<h1><font face="Helvetica">DVD Insert</font></h1>
 	<table>
 	<tr>
 		<td><font face="Helvetica"><b>DVD Title:</b></font></td>
 		<td><input type="text" name="title" /></td>
+	</tr>
+	<tr>
+		<td><font face="Helvetica"><b>Release Date</b></font></td>
+		<td><input type="text" name="release_date" /></td>
+	</tr>
+	<tr>
+		<td><font face="Helvetica"><b>Award:</b></font></td>
+		<td><input type="text" name="award" /></td>
 	</tr>
 	<tr>
 		<td><font face="Helvetica"><b>Genre:</b></font></td>

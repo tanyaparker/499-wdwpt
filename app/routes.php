@@ -28,7 +28,7 @@ Route::get('/dvds/create', 'DvdController@create');
 
 Route::post('/dvds', 'DvdController@insert');
 
-Event::listen('illuminate.query', function($sql)
-{
-  echo "<div style='color: green;'>$sql</div>";
-});
+// Event::listen('illuminate.query', function($sql)
+// {
+//   echo "<div style='color: green;'>$sql</div>";
+// });
