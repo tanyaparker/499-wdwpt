@@ -48,6 +48,27 @@ class Dvd extends Eloquent {
 		return $ratings;
 	}
 
+	public static function getSounds() {
+		$query = DB::table('sounds')
+			->select('id', 'sound_name');
+		$sounds = $query->get();
+		return $sounds;
+	}
+
+	public static function getLabels() {
+		$query = DB::table('labels')
+			->select('id', 'label_name');
+		$labels = $query->get();
+		return $labels;
+	}
+
+	public static function getFormats() {
+		$query = DB::table('formats')
+			->select('id', 'format_name');
+		$formats = $query->get();
+		return $formats;
+	}
+
 	public function format()
   	{
     	return $this->belongsTo('Format');

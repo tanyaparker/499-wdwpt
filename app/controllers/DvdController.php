@@ -36,10 +36,26 @@ class DvdController extends BaseController {
 		return View::make('dvds/create', [
 			'genres' => $genres,
 			'ratings' => $ratings,
-			'labels' => labels,
-			'sounds' => sounds,
-			'formats' => formats
+			'labels' => $labels,
+			'sounds' => $sounds,
+			'formats' => $formats
 		]);
+	}
+
+	public function insert()
+	{
+		$dvd = new Dvd();
+		$dvd->title = Input::get('title');
+		$dvd->genre_id = Input::get('genre');
+		$dvd->rating_id = Input::get('rating');
+		$dvd->label_id = Input::get('label');
+		$dvd->sound_id = Input::get('sound');
+		$dvd->format_id = Input::get('format');
+		$dvd->release_date = Input::get('release_date');
+		$dvd->save();
+
+		return Redirect::to('dvds/create')
+			->with('success', 'DVD successfully added.');
 	}
 
 }
