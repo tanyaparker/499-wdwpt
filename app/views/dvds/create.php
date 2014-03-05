@@ -3,7 +3,11 @@
 
 	if (Session::has('success')) : 
         echo "<p style='background-color: green;'>" . Session::get('success') . "<p>";
-	endif 
+	endif;
+
+	if (Session::has('errors')) : 
+        echo "<p style='background-color: red;'>" . Session::get('errors') . "<p>";
+	endif; 
 ?>
 <!doctype html>
 <html>
