@@ -34,6 +34,18 @@ class Dvd extends Eloquent {
 		return $dvds;	
 	}
 
+	public static function validate($input)
+    {
+        return Validator::make($input, [
+          'title'	=> 'alpha_num|min:3',
+          'genre'	=> 'required|integer',
+          'rating'	=> 'required|integer',
+          'label'	=> 'required|integer',
+          'sound'	=> 'required|integer',
+          'format'	=> 'required|integer'
+        ]);
+    }
+
 	public static function getGenres() {
 		$query = DB::table('genres')
 			->select('id', 'genre_name');
