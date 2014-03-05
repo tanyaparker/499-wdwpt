@@ -27,3 +27,7 @@ Route::get('/dvds', 'DvdController@listDvds');
 Route::get('/dvds/create', 'DvdController@create');
 
 Route::post('/dvds', 'DvdController@insert');
+
+Route::get('/twitter/search', 'TwitterController@search');
+
+Route::get('/twitter', 'TwitterController@results');
