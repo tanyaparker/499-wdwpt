@@ -37,12 +37,12 @@ class Dvd extends Eloquent {
 	public static function validate($input)
     {
         return Validator::make($input, [
-          'title'	=> 'alpha_num|min:3',
-          'genre'	=> 'required|integer',
-          'rating'	=> 'required|integer',
-          'label'	=> 'required|integer',
-          'sound'	=> 'required|integer',
-          'format'	=> 'required|integer'
+          'title'	=> 'required|alpha_num|min:3',
+          'genre_id'	=> 'required|integer',
+          'rating_id'	=> 'required|integer',
+          'label_id'	=> 'required|integer',
+          'sound_id'	=> 'required|integer',
+          'format_id'	=> 'required|integer'
         ]);
     }
 

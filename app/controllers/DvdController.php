@@ -60,7 +60,7 @@ class DvdController extends BaseController {
 			$dvd->format_id = Input::get('format_id');
 			$dvd->release_date = Input::get('release_date');
 			$dvd->award = Input::get('award');
-			//$dvd->save();
+			$dvd->save();
 
 			return Redirect::to('dvds/create')
 				->with('success', 'DVD successfully added.');
