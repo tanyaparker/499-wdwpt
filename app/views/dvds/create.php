@@ -22,7 +22,7 @@
 	<table>
 	<tr>
 		<td><font face="Helvetica"><b>DVD Title:</b></font></td>
-		<td><input type="text" name="title" /></td>
+		<td><input type="text" name="title" value="<?php echo Input::old('title') ?>"/></td>
 	</tr>
 	<tr>
 		<td><font face="Helvetica"><b>Release Date</b></font></td>

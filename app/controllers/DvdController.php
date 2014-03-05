@@ -48,6 +48,8 @@ class DvdController extends BaseController {
 
 		if ($validation->fails()) {
 			return Redirect::to('dvds/create')
+				->withInput()
+				->withErrors($validation)
 				->with('errors', $validation->messages());
 		}
 		else {
