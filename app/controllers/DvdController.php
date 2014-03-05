@@ -27,6 +27,10 @@ class DvdController extends BaseController {
 
 	public function create() 
 	{
+		$validation = Dvd::validate(Input::all());
+
+		if ($validation->passes()) {
+
 		$genres = Dvd::getGenres();
 		$ratings = Dvd::getRatings();
 		$labels = Dvd::getLabels();
@@ -39,7 +43,13 @@ class DvdController extends BaseController {
 			'labels' => $labels,
 			'sounds' => $sounds,
 			'formats' => $formats
-		]);
+			]);
+		}
+		else {
+
+		return Redirect::to('dvds/create')
+			->with('errors', $validation->messages());
+		}
 	}
 
 	public function insert()
