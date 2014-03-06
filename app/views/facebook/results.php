@@ -3,7 +3,7 @@
 <!doctype html>
 <html>
 <head>
-	<title>Facebook Results</title>
+	<title>Search Results</title>
 </head>
 
 <body>

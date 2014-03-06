@@ -1,4 +1,10 @@
-<?php require 'form.css'; ?>
+<?php 
+	require 'form.css'; 
+
+	if (Session::has('errors')) : 
+        echo "<p style='background-color: red;'>" . Session::get('errors') . "<p>";
+	endif; 
+?>
 <!doctype html>
 <html>
 <head>
@@ -8,7 +14,7 @@
 <body>
 
 <form method="get" action="/facebook">
-	<h1><font face="Helvetica">Facebook Search</font></h1>
+	<h1><font face="Helvetica">Facebook Page Search</font></h1>
 	<table>
 	<tr>
 		<td><font face="Helvetica"><b>Search: </b></font></td>

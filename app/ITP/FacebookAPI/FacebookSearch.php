@@ -8,8 +8,14 @@ class FacebookSearch {
 	{
 		$endpoint = "http://graph.facebook.com/";
 		$endpoint = $endpoint . $query;
-	    $json = file_get_contents($endpoint);
-	    return json_decode($json);
+
+		try {
+			$json = @file_get_contents($endpoint);
+			return json_decode($json);
+		}
+		catch (Exception $e) {
+			return false;
+		}
 	}
 }
 
