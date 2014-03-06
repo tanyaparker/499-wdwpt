@@ -1,5 +1,7 @@
 <?php
 
+use \ITP\TwitterAPI\TwitterSearch;
+
 class TwitterController extends BaseController {
 
 	public function search()
@@ -9,15 +11,18 @@ class TwitterController extends BaseController {
 
 	public function results()
 	{
-		// $title = Input::get('title');
-		// $genre_id = Input::get('genre_id');
-		// $rating_id = Input::get('rating_id');
-		// $dvds = Dvd::search($title, $genre_id, $rating_id);	
+		$search = Input::get('search');
+		//$result = TwitterSearch::getResults($search);	
 
-		// return View::make('twitter/results', [
-		// 	'dvds' => $dvds
-		// ]);
-		return View::make('twitter/reults');
+		$twitter = new TwitterSearch();
+		$query = "https://twitter.com/search?q=%40twitterapi"
+		$result = $twitter->getResults($query);
+
+		dd($result);
+
+		return View::make('twitter/results', [
+			'result' => $result
+		]);
 	}
 
 }

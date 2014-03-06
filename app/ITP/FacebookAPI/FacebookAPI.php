@@ -1,12 +1,13 @@
 <?php
 
-namespace ITP\TwitterAPI;
+namespace ITP\FacebookAPI;
 
-class TwitterSearch {
+class FacebookSearch {
 
 	public static function getResults($query)
 	{
-		$endpoint = "http://twitter.com/statuses/";
+		$endpoint = "graph.facebook.com/";
+		$endpoint = $endpoint . $query;
 	    $json = file_get_contents($endpoint);
 	    return json_decode($json);
 	}

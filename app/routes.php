@@ -28,6 +28,6 @@ Route::get('/dvds/create', 'DvdController@create');
 
 Route::post('/dvds', 'DvdController@insert');
 
-Route::get('/twitter/search', 'TwitterController@search');
+Route::get('/facebook/search', 'FacebookController@search');
 
-Route::get('/twitter', 'TwitterController@results');
+Route::get('/facebook', 'FacebookController@results');
